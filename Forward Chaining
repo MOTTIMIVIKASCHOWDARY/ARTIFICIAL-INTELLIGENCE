@@ -1,0 +1,7 @@
+fact(a).
+fact(b).
+
+rule(c) :- fact(a), fact(b).
+
+infer :- rule(X), \+ fact(X), assertz(fact(X)), write('Inferred: '), writeln(X), infer.
+infer.
