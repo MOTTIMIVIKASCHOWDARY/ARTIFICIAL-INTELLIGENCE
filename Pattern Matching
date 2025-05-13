@@ -1,0 +1,2 @@
+match([H|_], H).
+match([_|T], X) :- match(T, X).
