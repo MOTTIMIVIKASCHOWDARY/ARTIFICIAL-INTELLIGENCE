@@ -1,0 +1,6 @@
+diet(diabetes, 'Low sugar, high fiber foods like oats and vegetables').
+diet(blood_pressure, 'Low salt diet with more fruits and whole grains').
+diet(fever, 'Light food and warm fluids').
+diet(heart_problem, 'Low fat and cholesterol-free diet').
+
+suggest_diet(Disease) :- diet(Disease, Diet), write(Diet).
