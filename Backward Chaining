@@ -1,0 +1,6 @@
+fact(a).
+fact(b).
+
+goal(c) :- fact(a), fact(b).
+
+query(X) :- goal(X), write('Proved: '), write(X).
