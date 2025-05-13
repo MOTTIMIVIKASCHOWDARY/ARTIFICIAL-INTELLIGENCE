@@ -1,0 +1,13 @@
+at(monkey, room).
+at(banana, ceiling).
+at(box, room).
+
+move(box, under_banana).
+climb(monkey, box).
+
+can_reach(monkey, banana) :-
+    at(monkey, room),
+    at(banana, ceiling),
+    at(box, room),
+    move(box, under_banana),
+    climb(monkey, box).
