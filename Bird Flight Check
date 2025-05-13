@@ -1,0 +1,13 @@
+bird(sparrow).
+bird(eagle).
+bird(penguin).
+bird(ostrich).
+
+can_fly(sparrow).
+can_fly(eagle).
+
+cannot_fly(penguin).
+cannot_fly(ostrich).
+
+can_it_fly(Bird) :- can_fly(Bird), write(Bird), write(' can fly.').
+can_it_fly(Bird) :- cannot_fly(Bird), write(Bird), write(' cannot fly.').
