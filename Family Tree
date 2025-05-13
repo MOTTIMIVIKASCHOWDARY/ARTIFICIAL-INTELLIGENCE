@@ -1,0 +1,14 @@
+father(john, mary).
+father(john, tom).
+mother(susan, mary).
+mother(susan, tom).
+
+male(john).
+male(tom).
+female(susan).
+female(mary).
+
+parent(X, Y) :- father(X, Y).
+parent(X, Y) :- mother(X, Y).
+
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
