@@ -1,0 +1,22 @@
+edge(a, b, 1).
+edge(a, c, 3).
+edge(b, d, 5).
+edge(c, d, 1).
+
+heuristic(b, 6).
+heuristic(c, 2).
+heuristic(d, 0).
+
+best_first(Start, Goal, Path) :- bestfs([[Start]], Goal, RevPath), reverse(RevPath, Path).
+
+bestfs([[Goal|Rest]|_], Goal, [Goal|Rest]).
+bestfs([CurrentPath|OtherPaths], Goal, FinalPath) :-
+    CurrentPath = [CurrentNode|_],
+    findall([NextNode|CurrentPath], (edge(CurrentNode, NextNode, _), \+ member(NextNode, CurrentPath)), NewPaths),
+    append(OtherPaths, NewPaths, TempPaths),
+    sort_paths(TempPaths, SortedPaths),
+    bestfs(SortedPaths, Goal, FinalPath).
+
+sort_paths(Paths, Sorted) :- map_list_to_pairs(path_heuristic, Paths, Pairs), keysort(Pairs, SortedPairs), pairs_values(SortedPairs, Sorted).
+
+path_heuristic([Node|_], H) :- heuristic(Node, H).
