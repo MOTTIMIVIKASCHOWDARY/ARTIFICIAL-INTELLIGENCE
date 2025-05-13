@@ -1,0 +1,7 @@
+has_symptom(john, fever).
+has_symptom(john, cough).
+has_symptom(john, headache).
+
+disease(john, flu) :- has_symptom(john, fever), has_symptom(john, cough), has_symptom(john, headache).
+
+diagnose(Person, Disease) :- disease(Person, Disease), write('Disease: '), write(Disease).
